@@ -8,6 +8,8 @@ defmodule Taskarr.Repo.Migrations.CompaniesEmployees do
 
       add :team_id, references(:companies_teams)
       add :company_id, references(:companies_companies, on_delete: :delete_all), null: false
+
+      timestamps()
     end
   end
 end
