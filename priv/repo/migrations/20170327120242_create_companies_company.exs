@@ -5,7 +5,7 @@ defmodule Taskarr.Repo.Migrations.CreateTaskarr.Companies.Company do
     create table(:companies_companies) do
       add :name, :string
 
-      add :director_id, references(:accoutns_users, on_delete: :delete_all), :null_false
+      add :director_id, references(:accounts_users, on_delete: :delete_all), null: false
 
       timestamps()
     end

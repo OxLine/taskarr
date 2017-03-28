@@ -25,6 +25,7 @@ defmodule Taskarr.Web.Router do
     resources "/companies", CompanyController
     resources "/teams", TeamController
     resources "/employees", EmployeeController
+    resources "/tasks", TaskController
   end
 
   scope "/", Taskarr.Web do

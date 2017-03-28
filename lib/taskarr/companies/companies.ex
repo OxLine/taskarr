@@ -227,7 +227,7 @@ defmodule Taskarr.Companies do
 
   """
   def list_employees(team) do
-    Repo.all(form t in Employee, where: t.team_id == ^team.id)
+    Repo.all(from t in Employee, where: t.team_id == ^team.id)
   end
 
   @doc """
@@ -317,8 +317,8 @@ defmodule Taskarr.Companies do
 
   defp employee_changeset(%Employee{} = employee, attrs) do
     employee
-    |> cast(attrs, [:company_id, :employee_id, :team_id])
-    |> validate_required([:company_id, :employee_id])
+    |> cast(attrs, [:is_confirmd, :company_id, :employee_id, :team_id])
+    |> validate_required([:is_confirmd, :company_id, :employee_id])
   end
 
   alias Taskarr.Companies.Task
