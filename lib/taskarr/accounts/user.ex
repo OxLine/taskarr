@@ -7,8 +7,8 @@ defmodule Taskarr.Accounts.User do
     field :password, :string, virtual: true 
     field :password_hash, :string
 
-    has_many :companies, Companies.Company
-    has_many :teams, Companies.Team
+    has_many :companies, Taskarr.Companies.Company
+    has_many :teams, Taskarr.Companies.Team
 
     timestamps()
   end

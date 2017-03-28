@@ -2,6 +2,8 @@ defmodule Taskarr.Companies.Employee do
   use Ecto.Schema
   
   schema "companies_employees" do
+    field :is_confirmd, :boolean, default: false
+
     belongs_to :employee, Taskarr.Accounts.User
     
     belongs_to :team, Taskarr.Companies.Team
