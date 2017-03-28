@@ -22,6 +22,9 @@ defmodule Taskarr.Web.Router do
     delete "/sessions", SessionController, :delete
     post "/sessions/refresh", SessionController, :refresh
     resources "/users", UserController, only: [:create]
+    resources "/companies", CompanyController
+    resources "/teams", TeamController
+    resources "/employees", EmployeeController
   end
 
   scope "/", Taskarr.Web do
