@@ -19,7 +19,7 @@ class Companies extends Component {
           ) }
         </div>
       </div>
-    )
+    );
   }
 
 
@@ -28,4 +28,4 @@ class Companies extends Component {
 export default connect(
   (state) => ({
     company: state.company,
-}), { getCompanies })(Companies);
+  }), { getCompanies })(Companies);
