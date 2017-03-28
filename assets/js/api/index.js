@@ -62,6 +62,5 @@ export default {
       method: 'DELETE',
       headers: headers(),
     })
-      .then(parseResponse);
   },
 };
