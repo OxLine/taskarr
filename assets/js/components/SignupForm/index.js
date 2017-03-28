@@ -53,7 +53,7 @@ class SignupForm extends Component {
         <Link to="/Login" className="btn">
           Login to your account
         </Link>
-      </form> 
+      </form>
     );
   }
 }
