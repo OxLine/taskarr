@@ -2,7 +2,7 @@ const API = 'api';
 
 function headers() {
   const token = JSON.parse(localStorage.getItem('token'));
-  
+
   return {
     Accept: 'application/json',
     'Content-Type': 'application/json',
