@@ -8,6 +8,7 @@ import Home from '../Home';
 import NotFound from '../../components/NotFound';
 import Login from '../Login';
 import Signup from '../Signup';
+import CreateCompany from '../CreateCompany';
 import MatchAuthenticated from '../MatchAuthenticated';
 
 type Props = {
@@ -50,6 +51,7 @@ class App extends Component {
 
         <Route path="/" component={MatchAuthenticated}>
           <IndexRoute component={Home} />
+          <IndexRoute component={CreateCompany} />
         </Route>
 
         <Route path="*" component={ NotFound } />
