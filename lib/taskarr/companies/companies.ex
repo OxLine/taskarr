@@ -50,7 +50,8 @@ defmodule Taskarr.Companies do
 
   """
   def create_company(user, attrs \\ %{}) do
-    attrs = Map.put(attrs, "director", user.id)
+    attrs = Map.put(attrs, "director_id", user.id)
+    IO.inspect attrs
 
     %Company{}
     |> company_changeset(attrs)

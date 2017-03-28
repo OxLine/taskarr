@@ -2,10 +2,12 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as form } from 'redux-form';
 import session from './session';
+import company from './company.js'
 
 const appReducer = combineReducers({
   form,
   session,
+  company,
   routing: routerReducer,
 });
 

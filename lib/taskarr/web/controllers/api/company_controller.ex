@@ -44,12 +44,13 @@ defmodule Taskarr.Web.CompanyController do
 
   def delete(conn, %{"id" => id}) do
     company = Companies.get_company!(id)
-    with user = Accounts.get_current_user(conn),
-         {:ok, %Company{}} <- Companies.delete_company(company) do
-      if user.id != company.director do
-        raise "Permission denied"
-      end
+    user = Accounts.get_current_user(conn)
 
+    if user.id != company.director_id do
+      raise "Permission denied"
+    end
+
+    with {:ok, %Company{}} <- Companies.delete_company(company) do
       send_resp(conn, :no_content, "")
     end
   end

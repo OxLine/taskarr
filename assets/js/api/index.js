@@ -11,6 +11,7 @@ function headers() {
 }
 
 function parseResponse(response) {
+  console.log(response);
   return response.json().then((json) => {
     if (!response.ok) {
       return Promise.reject(json);

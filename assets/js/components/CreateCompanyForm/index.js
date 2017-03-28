@@ -21,7 +21,7 @@ class CreateCompanyForm extends Component {
       <form onSubmit={handleSubmit(this.handleSubmit)}>
         <h3>Create a company</h3>
           <Field
-            name="companyName"
+            name="name"
             type="text"
             component={Input}
             placeholder="Company name"

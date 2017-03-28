@@ -47,11 +47,4 @@ export function authenticate() {
   };
 }
 
-export function createCompany(data, router) {
-  return dispatch => api.post('/companies', data)
-  // .then((response) => {
-  // HELP!!!!!!!!!!!!
-  // })
-}
-
 export const unauthenticate = () => ({ type: 'AUTHENTICATION_FAILURE'});
