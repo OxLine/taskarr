@@ -19,6 +19,7 @@ defmodule Taskarr.Companies do
   """
   def list_companies(user) do
     Repo.all(from t in Company, where: t.director_id == ^user.id)
+    |> Repo.preload(:employees)
   end
 
   @doc """
@@ -227,8 +228,9 @@ defmodule Taskarr.Companies do
       [%Employee{}, ...]
 
   """
-  def list_employees(team) do
-    Repo.all(from t in Employee, where: t.team_id == ^team.id)
+  def list_employees do
+    # Repo.all(from t in Employee, where: t.team_id == ^team.id)
+    Repo.all(Employee)
   end
 
   @doc """
