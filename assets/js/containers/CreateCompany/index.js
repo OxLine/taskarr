@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import DocumentTitle from 'react-document-title';
 import { createCompany, getCompanies, deleteCompany } from '../../actions/company';
 import CreateCompanyForm from '../../components/CreateCompanyForm';
-import Navbar from '../Navbar';
 
 type Props = {
   createCompany: () => void,
@@ -13,7 +12,7 @@ class CreateCompany extends Component {
   componentWillMount() {
     this.props.getCompanies();
   }
-  
+
   static contextTypes = {
     router: PropTypes.object,
   }
@@ -33,10 +32,9 @@ class CreateCompany extends Component {
     return (
       <DocumentTitle title="Create company">
         <div className="container">
-          <Navbar />
           <div className="row">
-          { companies.map(company => 
-            <div className="col s6 m4">
+          { companies.map(company =>
+            <div className="col s6 m4" key={company.id}>
               <div className="card">
                 <div className="card-content">{ company.name }</div>
                 <div className="card-action">
@@ -54,5 +52,5 @@ class CreateCompany extends Component {
 
 export default connect(
   (state) => ({
-    company: state.company, 
+    company: state.company,
   }), { createCompany, getCompanies, deleteCompany })(CreateCompany);
