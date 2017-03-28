@@ -4,6 +4,7 @@ import api from '../api';
 export function createCompany(data) {
   return dispatch => api.post('/companies', {company: data})
     .then((response) => {
+      dispatch(reset('createCompany'));
       dispatch({type: 'ADD_COMPANY', response: response.data});
     });
 }
@@ -20,7 +21,7 @@ export function getCompanies() {
 
 export function deleteCompany(id) {
   return  dispatch => {
-    // TODO: (chernyshov) fix unexpected end of JSON input Tue 28 Mar 2017 04:45:21 PM EEST
+    // TODO: (chernyshov) fix unexpected end of JSON input Tue 28 Mar 2017 05:06:23 PM EEST
     
     dispatch({type: 'DELETE_COMPANY', id: id});
     api.delete('/companies/' + id)

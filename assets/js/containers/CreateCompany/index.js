@@ -22,7 +22,10 @@ class CreateCompany extends Component {
 
   handleSignup = data => this.props.createCompany(data, this.context.router);
 
-  handleDelete = (id) => () => this.props.deleteCompany(id);
+  handleDelete = (id) => (e) => {
+    e.preventDefault();
+    this.props.deleteCompany(id);
+  }
 
   render() {
     var { companies, fetching_companies } = this.props.company;
@@ -31,10 +34,17 @@ class CreateCompany extends Component {
       <DocumentTitle title="Create company">
         <div className="container">
           <Navbar />
-          { companies.map(company => <div key={ company.id }>
-            <span>{ company.name }</span>
-            <button className="btn" onClick={ this.handleDelete(company.id) }>delete</button>
+          <div className="row">
+          { companies.map(company => 
+            <div className="col s6 m4">
+              <div className="card">
+                <div className="card-content">{ company.name }</div>
+                <div className="card-action">
+                  <a onClick={ this.handleDelete(company.id) } href="">delete</a>
+                </div>
+              </div>
             </div>) }
+          </div>
           <CreateCompanyForm onSubmit={this.handleSignup} />
         </div>
       </DocumentTitle>
