@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 import Navbar from '../Navbar';
+
+import CreateCompany from '../CreateCompany';
 import DocumentTitle from 'react-document-title';
 
 
@@ -11,6 +13,7 @@ class Home extends Component {
         <div>
           <div className="container">
             <Navbar />
+            <CreateCompany />
           </div>
         </div>
       </DocumentTitle>
