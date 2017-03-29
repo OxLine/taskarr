@@ -18,7 +18,7 @@ class AddTasks extends Component {
   props: Props
 
   handleAddTasks = data => this.props.addTasks({...data,
-                                                company_id: this.props.params.companyid},
+                                                company_id: this.props.params.company_id},
                                               this.context.router);
 
   render() {

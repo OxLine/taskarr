@@ -15,7 +15,7 @@ class AddEmployee extends Component {
   props: Props
 
   handleAddEmployee = data => this.props.addEmployee({...data,
-                                            company_id: this.props.companyid},
+                                            company_id: this.props.company_id},
                                             this.context.router);
 
   render() {
