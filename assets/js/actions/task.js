@@ -26,7 +26,7 @@ export function fetchTasks() {
 }
 
 export function addTasks(data) {
-  const tasks = data.split('/\r?\n/');
+  const tasks = data.tasks.split('/\r?\n/');
   return dispatch => api.post('/tasks', {...tasks})
     .then((response) => {
       dispatch(reset('addTasks'));

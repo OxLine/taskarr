@@ -18,10 +18,11 @@ class AddTasks extends Component {
   props: Props
 
   handleAddTasks = data => this.props.addTasks({...data,
-                                                company_id: this.props.params.company_id},
+                                                company_id: this.props.params.companyid},
                                               this.context.router);
 
   render() {
+    console.log('KAPPA');
     return (
       <div className="container">
         <Navbar />
