@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { deleteTask } from '../../actions/task';
 
 class Task extends Component {
+  constructor (props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.render_task = this.render_task.bind(this);
+  }
+
   handleDelete() {
     var { team_id } = this.props.data;
     this.props.deleteTask(team_id);
