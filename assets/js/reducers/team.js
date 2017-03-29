@@ -16,14 +16,9 @@ export default function (state = initialState, action) {
       }
       return new_teams;
     case 'DELETE_TEAM':
-      var new_teams = state.slice();
-      for (var i=0; i < new_teams.length; i++) {
-        if (new_teams[i] === action.id) {
-          new_teams.slice(i, 1);
-          break;
-        }
-      }
-      return new_teams;
+      return state.filter((team) => {
+        return team.id!==action.id;
+      });
     default:
       return state;
   }
