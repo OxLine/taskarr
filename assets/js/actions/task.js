@@ -1,11 +1,27 @@
 import { reset } from 'redux-form';
 import api from '../api'
 
-export function fetchTasks(company_id, team_id=null) {
-  return dispatch => api.fetch('/tasks/company/' +
-                                company_id + team_id?('/team/' + team_id):'')
+export function fetchTasksByCompany(company_id) {
+  return dispatch => api.fetch('/tasks/company/' + company_id)
     .then((response) => {
       dispatch({type: 'SET_TASKS', response: response.data});
+                    /* Возможно у этих ребят должны быть разные type-ы*/
+    });
+}
+
+export function fetchTasksByTeam(team_id) {
+  return dispatch => api.fetch('/tasks/team/' +team_id)
+    .then((response) => {
+      dispatch({type: 'SET_TASKS', response: response.data});
+                    /* Возможно у этих ребят должны быть разные type-ы*/
+    });
+}
+
+export function fetchTasks() {
+  return dispatch => api.fetch('/tasks')
+    .then((response) => {
+      dispatch({type: 'SET_TASKS', response: response.data});
+                    /* Возможно у этих ребят должны быть разные type-ы*/
     });
 }
 
