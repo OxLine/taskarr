@@ -13,9 +13,10 @@ export function fetchTeams(company_id) {
 }
 
 export function addTeam(data) {
-  return dispatch => api.post('/teams', data)
+  console.log(data);
+  return dispatch => api.post('/teams', {team: data})
     .then((response) => {
-      dispatch(reset('addEmployee'));
+      dispatch(reset('addTeam'));
       dispatch({type: 'ADD_TEAM', response: response.data});
     });
 }

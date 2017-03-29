@@ -18,14 +18,20 @@ class CreateCompanyForm extends Component {
 
     return (
       <form onSubmit={handleSubmit(this.handleSubmit)}>
-        <h3>Create a company</h3>
           <Field
             name="name"
             type="text"
             component={Input}
-            placeholder="email"
+            placeholder="team name"
             className="form-control"
           />
+          <button
+            type="submit"
+            disabled={submitting}
+            className="btn"
+          >
+            {submitting ? 'In progress...' : 'Add Team'}
+          </button>
       </form>
     );
   }
@@ -33,13 +39,13 @@ class CreateCompanyForm extends Component {
 
 const validate = (values) => {
   const errors = {};
-  if (!values.email) {
-    errors.email = 'Required';
+  if (!values.name) {
+    errors.name = 'Required';
   }
   return errors;
 };
 
 export default reduxForm({
-  form: 'addEmployee',
+  form: 'addTeam',
   validate,
 })(CreateCompanyForm);
