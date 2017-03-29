@@ -14,12 +14,12 @@ class AddEmployee extends Component {
 
   props: Props
 
-  handleSignup = data => this.props.addEmployee({...data, company_id: this.props.company_id}, this.context.router);
+  handleAddEmployee= data => this.props.addEmployee({...data, company_id: this.props.company_id}, this.context.router);
 
   render() {
     return (
       <div className="container">
-        <AddEmployeeForm onSubmit={this.handleSignup} />
+        <AddEmployeeForm onSubmit={this.handleAddEmployee} />
       </div>
     );
   }

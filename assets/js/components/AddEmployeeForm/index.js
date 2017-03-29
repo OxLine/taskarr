@@ -25,6 +25,13 @@ class AddEmployeeForm extends Component {
             placeholder="email"
             className="form-control"
           />
+          <button
+            type="submit"
+            disabled={submitting}
+            className="btn"
+          >
+            {submitting ? 'In progress...' : 'Invite'}
+          </button>
       </form>
     );
   }
