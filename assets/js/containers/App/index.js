@@ -68,4 +68,4 @@ export default connect(
   state => ({
     isAuthenticated: state.session.isAuthenticated,
     willAuthenticate: state.session.willAuthenticate,
-  }), { authenticate, unauthenticate, redirectAuthenticated })(App);
+  }), { authenticate, unauthenticate, redirectAuthenticated })(App)
