@@ -11,7 +11,10 @@ defmodule Taskarr.Web.TeamView do
   end
 
   def render("team.json", %{team: team}) do
-    %{id: team.id,
-      name: team.name}
+    %{
+      id: team.id,
+      name: team.name,
+      teamlid_id: team.teamlid_id,
+    }
   end
 end

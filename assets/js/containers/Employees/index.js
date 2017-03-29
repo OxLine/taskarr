@@ -2,34 +2,27 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Employee from '../Employee';
 
-import AddEmployee from '../AddEmployee';
-
 class Employees extends Component {
+<<<<<<< HEAD
   getUndestributedeEmployees (employees) {
     employees.filter(emp => !emp.team_id);
   }
 
+=======
+>>>>>>> ae221a1a47d938abc7d22073a71513b0dea3950f
   render() {
     var { employees, company_id } = this.props;
 
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col s6">
-            <AddEmployee company_id={this.props.company_id}/>
-            <div className="team-list">
-              { employees.map((employee) =>
-                  <Employee key={employee.id} data={employee} />
-              )}
-            </div>
-          </div>
+      <div>
+        <div className="team-list container">
+          { employees.map((employee) =>
+              <Employee key={employee.id} data={employee} />
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default connect(
-  (state) => ({
-    employees: state.employees,
-}), null)(Employees);
+export default connect()(Employees);
