@@ -5,10 +5,6 @@ import { deleteEmployee } from '../../actions/employee';
 class Employee extends Component {
   handleDelete = () => {
     var { id } = this.props.data;
-  }
-
-  handleDelete = () => {
-    var id = this.props.data.id;
     this.props.deleteEmployee(id)
   };
 
