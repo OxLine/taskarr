@@ -11,6 +11,8 @@ import NotFound from '../../components/NotFound';
 import Login from '../Login';
 import Signup from '../Signup';
 import MatchAuthenticated from '../MatchAuthenticated';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 type Props = {
   authenticate: () => void,
@@ -53,7 +55,7 @@ class App extends Component {
         <Route path="/" component={MatchAuthenticated}>
           <IndexRoute component={Home} />
           <Route path="/distribution/:id" component={EmployeeDistribution} />
-          <Route path="/add_tasks/:team_id" componen={AddTasks} />
+          <Route path="/add_tasks/:team_id" component={AddTasks} />
         </Route>
 
         <Route path="*" component={ NotFound } />
