@@ -15,14 +15,14 @@ class AddTasks extends Component {
   props: Props
 
   handleAddTasks = data => this.props.addTasks({...data,
-                                                team_id: this.props.team_id},
+                                                company_id: this.props.company_id},
                                               this.context.router);
 
   render() {
     return (
       <div className="container">
         <Link className="btn" to="/distribution/:id">Employee distribution</Link>
-        <Link className="btn" to="/manage_tasks/:team_id">Manage tasks</Link>
+        <Link className="btn" to="/manage_tasks/:company_id">Manage tasks</Link>
         <AddTasksForm onSubmit={this.handleAddTasks} />
       </div>
     );
