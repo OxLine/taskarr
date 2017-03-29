@@ -6,7 +6,7 @@ class Teams extends Component {
   getTeamEmployees = (employees, id) => employees.filter(emp => emp.team_id === id)
 
   render() {
-    var { teams, company_id, employees } = this.props;
+    var { teams, employees } = this.props;
 
     return (
       <div>

@@ -40,23 +40,17 @@ class EmployeeDistribution extends Component {
       <div className="container">
         <Navbar />
         <div className="container">
-          <Link className="btn" to={ "/add_tasks/"+this.props.params.id }/>
-            Add new tasks
-          </Link>
-          <Link className="btn" to={ "/manage_tasks/"+this.props.params.id }>
-            Manage tasks
-          </Link>
+          <Link className="btn" to={ '/add_tasks/'+this.props.params.id }>Add tasks</Link>
+          <Link className="btn" to={ '/manage_tasks/'+this.props.params.id }>Manage tasks</Link>
         </div>
         <div className="row">
           <div className="col s6">
             <AddEmployee company_id={id}/>
-            <Employees employees={ undestributedEmployees }
-              company_id={this.props.params.id}/>
+            <Employees employees={ undestributedEmployees }/>
           </div>
           <div className="col s6">
             <AddTeam company_id={id}/>
-            <Teams employees={ distrubetedEmployees }
-              company_id={this.props.params.id}/>
+            <Teams employees={ distrubetedEmployees }/>
           </div>
         </div>
       </div>
@@ -67,4 +61,4 @@ class EmployeeDistribution extends Component {
 export default connect(
 (state) => ({
   employees: state.employees,
-  }), { fetchEmployees, fetchTeams })(EmployeeDistribution);
+}), { fetchEmployees, fetchTeams })(EmployeeDistribution);

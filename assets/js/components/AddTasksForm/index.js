@@ -17,10 +17,11 @@ class AddTasksForm extends Component {
     const { handleSubmit, submitting } = this.props;
 
     return (
+      // textarea ??????????????????????????????
       <form onSubmit={handleSubmit(this.handleSubmit)}>
           <Field
             name="tasks"
-            type="text"
+            type="textarea"
             component={Input}
             placeholder="Tasks text"
             className="form-control"
