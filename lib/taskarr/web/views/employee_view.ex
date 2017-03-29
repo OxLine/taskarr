@@ -14,7 +14,7 @@ defmodule Taskarr.Web.EmployeeView do
     %{
       id: employee.id,
       username: employee.employee.username,
-      is_confirmd: employee.is_confirmd,
+      is_confirmed: employee.is_confirmed,
       team_id: employee.team_id,
     }
   end
