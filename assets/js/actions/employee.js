@@ -20,7 +20,7 @@ export function addEmployee(data) {
 }
 
 export function deleteEmployee(id) {
-  return dispatch => api.delete('/employee/' + id)
+  return dispatch => api.delete('/employees/' + id)
     .then(() => {
       dispatch({type: 'DELETE_EMPLOYEE', id: id}); 
     });
