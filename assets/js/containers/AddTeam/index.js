@@ -14,12 +14,12 @@ class AddTeam extends Component {
 
   props: Props
 
-  handleSignup = data => this.props.addTeam({...data, company_id: this.props.company_id}, this.context.router);
+  handleAddTeam = data => this.props.addTeam({...data, company_id: this.props.company_id}, this.context.router);
 
   render() {
     return (
       <div className="container">
-        <AddTeamForm onSubmit={this.handleSignup} />
+        <AddTeamForm onSubmit={this.handleAddTeam} />
       </div>
     );
   }

@@ -14,12 +14,12 @@ class CreateCompany extends Component {
 
   props: Props
 
-  handleSignup = data => this.props.createCompany(data, this.context.router);
+  handleCreateCompany = data => this.props.createCompany(data, this.context.router);
 
   render() {
     return (
       <div className="container">
-        <CreateCompanyForm onSubmit={this.handleSignup} />
+        <CreateCompanyForm onSubmit={this.handleCreateCompany} />
       </div>
     );
   }
