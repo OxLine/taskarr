@@ -1,14 +1,11 @@
 var initialState = {
   companies: [], 
-  fetching_companies: false
 }
 
 export default function(state = initialState, action) {
   switch(action.type){
-    case 'START_FETCHING_COMPANIES':
-      return {...state, fetching_companies: true}
     case 'SET_COMPANIES':
-      return {...state, companies: action.response, fetching_companies: false}
+      return {...state, companies: action.response}
     case 'ADD_COMPANY':
       return {...state, companies: [...state.companies, action.response]}
     case 'DELETE_COMPANY':

@@ -1,4 +1,4 @@
-const API = 'api';
+const API = '/api';
 
 function headers() {
   const token = JSON.parse(localStorage.getItem('token'));

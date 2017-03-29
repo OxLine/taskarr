@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getCompanies } from '../../actions/company';
 import Company from '../Company';
+import CreateCompany from '../CreateCompany';
 
 class Companies extends Component {
   componentWillMount() {
@@ -9,7 +10,7 @@ class Companies extends Component {
   }
 
   render() {
-    var { companies, fetching_companies } = this.props.company;
+    var { companies } = this.props.company;
 
     return (
       <div className="container">
@@ -18,6 +19,7 @@ class Companies extends Component {
           <Company key={company.id} data={{...company}}/>
           ) }
         </div>
+        <CreateCompany />
       </div>
     );
   }

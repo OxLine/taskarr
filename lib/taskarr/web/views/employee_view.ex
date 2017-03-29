@@ -11,6 +11,10 @@ defmodule Taskarr.Web.EmployeeView do
   end
 
   def render("employee.json", %{employee: employee}) do
-    %{id: employee.id}
+    %{
+      id: employee.id,
+      username: employee.employee.username,
+      team_id: employee.team_id,
+    }
   end
 end

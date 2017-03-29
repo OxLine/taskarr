@@ -8,21 +8,31 @@ defmodule Taskarr.Web.TeamController do
   action_fallback Taskarr.Web.FallbackController
 
   def index(conn, _params) do
-    with user = Accounts.get_current_user(conn) do
-      teams = Companies.list_teams(user)
-      render(conn, "index.json", teams: teams)
-    end 
+    teams = Companies.list_teams()
+    render(conn, "index.json", teams: teams)
+  end
+
+  def index_by_company(conn, %{"id" => id}) do
+    company = Companies.get_company!(id)
+    user = Accounts.get_current_user(conn)
+
+    if user.id != company.director_id do
+      raise "Permission denied"
+    end
+
+    teams = Companies.list_teams_by_company(company)
+    render(conn, "index.json", teams: teams)
   end
 
   def create(conn, %{"team" => team_params}) do
-    with user = Accounts.get_current_user(conn),
-         {:ok, %Team{} = team} <- Companies.create_team(user, team_params) do
-      company = Companies.get_company!(team.company_id)
+    user = Accounts.get_current_user(conn)
+    company = Companies.get_company!(team_params["company_id"])
       
-      if user.id != company.director_id do
-        raise "Permission denied" 
-      end
+    if user.id != company.director_id do
+      raise "Permission denied" 
+    end
 
+    with {:ok, %Team{} = team} <- Companies.create_team(team_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", team_path(conn, :show, team))

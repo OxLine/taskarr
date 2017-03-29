@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { createCompany, getCompanies, deleteCompany } from '../../actions/company';
+import { createCompany } from '../../actions/company';
 import CreateCompanyForm from '../../components/CreateCompanyForm';
 
 type Props = {

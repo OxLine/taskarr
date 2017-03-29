@@ -11,7 +11,6 @@ export function createCompany(data) {
 
 export function getCompanies() {
   return dispatch => {
-    dispatch({type: 'START_FETCHING_COMPANIES'});
     api.fetch('/companies')
       .then((response) => {
         dispatch({type: 'SET_COMPANIES', response: response.data});

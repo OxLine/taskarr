@@ -11,17 +11,23 @@ type Props = {
 class MatchAuthenticated extends Component {
   props: Props
 
-  componentDidMount() {
+  //componentDidMount() {
+  //  const { dispatch, isAuthenticated, willAuthenticate } = this.props;
+
+  //  if ( !isAuthenticated && !willAuthenticate ) { 
+  //    dispatch(push('/login')); 
+  //  }
+  //}
+
+  //componentDidUpdate(prevProps, prevState) {
+  //  const { dispatch, isAuthenticated, willAuthenticate } = this.props;
+
+  //  if ( !isAuthenticated && !willAuthenticate ) { 
+  //    dispatch(push('/login')); 
+  //  }
+  //}
+  componentWillMount() {
     const { dispatch, isAuthenticated, willAuthenticate } = this.props;
-
-    if ( !isAuthenticated && !willAuthenticate ) { 
-      dispatch(push('/login')); 
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { dispatch, isAuthenticated, willAuthenticate } = this.props;
-
     if ( !isAuthenticated && !willAuthenticate ) { 
       dispatch(push('/login')); 
     }
@@ -33,11 +39,12 @@ class MatchAuthenticated extends Component {
     if (isAuthenticated) {
       return ( <div>{ this.props.children }</div>);
     } else {
-      return null
+      return null;
     }
   }
 
   render() {
+
     return (
       <div>
         { this.render_or_redirect() }

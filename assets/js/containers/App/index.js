@@ -51,7 +51,7 @@ class App extends Component {
 
         <Route path="/" component={MatchAuthenticated}>
           <IndexRoute component={Home} />
-          <Route path="/director" component={EmployeeDistribution} />
+          <Route path="/distribution/:id" component={EmployeeDistribution} />
         </Route>
 
         <Route path="*" component={ NotFound } />

@@ -23,7 +23,9 @@ defmodule Taskarr.Web.Router do
     post "/sessions/refresh", SessionController, :refresh
     resources "/users", UserController, only: [:create]
     resources "/companies", CompanyController
+    get "/teams/company/:id", TeamController, :index_by_company
     resources "/teams", TeamController
+    get "/employees/company/:id", EmployeeController, :index_by_company
     resources "/employees", EmployeeController
     resources "/tasks", TaskController
   end

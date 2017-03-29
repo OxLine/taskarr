@@ -11,7 +11,9 @@ defmodule Taskarr.Web.CompanyView do
   end
 
   def render("company.json", %{company: company}) do
-    %{id: company.id,
-      name: company.name}
+    %{
+      id: company.id,
+      name: company.name,
+    }
   end
 end

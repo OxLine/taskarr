@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { deleteCompany } from '../../actions/company';
 
 class Company extends Component {
@@ -10,12 +11,12 @@ class Company extends Component {
   }
 
   render() {
-    var { name } = this.props.data;
+    var { name, id } = this.props.data;
 
     return (
       <div className="col s6 m4">
         <div className="card">
-          <div className="card-content">{ name }</div>
+          <div className="card-content"><Link to={`/distribution/${id}`}>{ name }</Link></div>
           <div className="card-action">
             <a onClick={ this.handleDelete } href="">delete</a>
           </div>

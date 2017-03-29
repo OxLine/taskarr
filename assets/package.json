@@ -1,7 +1,7 @@
 {
   "repository": {},
   "license": "MIT",
-  "description": "Task management app",
+  "description": "react-redux + users boilerplate",
   "scripts": {
     "deploy": "brunch build --production",
     "watch": "brunch watch --stdin",
@@ -47,7 +47,6 @@
   },
   "name": "assets",
   "version": "1.0.0",
-  "description": "react-redux + users boilerplate",
   "main": "index.js",
   "author": "Dmitriy Chernyshov"
 }

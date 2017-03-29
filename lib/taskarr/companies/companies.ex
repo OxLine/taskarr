@@ -19,7 +19,6 @@ defmodule Taskarr.Companies do
   """
   def list_companies(user) do
     Repo.all(from t in Company, where: t.director_id == ^user.id)
-    |> Repo.preload(:employees)
   end
 
   @doc """
@@ -52,7 +51,6 @@ defmodule Taskarr.Companies do
   """
   def create_company(user, attrs \\ %{}) do
     attrs = Map.put(attrs, "director_id", user.id)
-    IO.inspect attrs
 
     %Company{}
     |> company_changeset(attrs)
@@ -124,7 +122,11 @@ defmodule Taskarr.Companies do
       [%Team{}, ...]
 
   """
-  def list_teams(company) do
+  def list_teams do
+    Repo.all(Team)
+  end
+
+  def list_teams_by_company(company) do
     Repo.all(from t in Team, where: t.company_id == ^company.id)
   end
 
@@ -156,9 +158,7 @@ defmodule Taskarr.Companies do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_team(user, attrs \\ %{}) do
-    attrs = Map.put(attrs, "teamlid_id", user.id)
-
+  def create_team(attrs \\ %{}) do
     %Team{}
     |> team_changeset(attrs)
     |> Repo.insert()
@@ -214,7 +214,7 @@ defmodule Taskarr.Companies do
   defp team_changeset(%Team{} = team, attrs) do
     team
     |> cast(attrs, [:name, :teamlid_id, :company_id])
-    |> validate_required([:name, :teamlid_id, :company_id])
+    |> validate_required([:name, :company_id])
   end
 
   alias Taskarr.Companies.Employee
@@ -231,6 +231,11 @@ defmodule Taskarr.Companies do
   def list_employees do
     # Repo.all(from t in Employee, where: t.team_id == ^team.id)
     Repo.all(Employee)
+  end
+
+  def list_employees_by_company(company) do
+    Repo.all(from t in Employee, where: t.company_id == ^company.id)
+    |> Repo.preload(:employee)
   end
 
   @doc """
@@ -265,6 +270,9 @@ defmodule Taskarr.Companies do
   """
   def create_employee(company, attrs \\ %{}) do
     attrs = Map.put(attrs, "company_id", company.id)
+
+    employee = Repo.get_by(Taskarr.Accounts.User, email: attrs["email"])
+    attrs = Map.put(attrs, "employee_id", employee.id)
 
     %Employee{}
     |> employee_changeset(attrs)

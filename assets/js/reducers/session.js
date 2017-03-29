@@ -1,6 +1,6 @@
 const initialState = {
   isAuthenticated: false,
-  willAuthenticate: false,
+  willAuthenticate: true,
   currentUser: {},
 };
 
@@ -27,6 +27,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isAuthenticated: false,
+        willAuthenticate: false,
         currentUser: {},
       };
     default:
