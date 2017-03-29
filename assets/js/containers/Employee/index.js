@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { deleteEmployee } from '../../actions/employee';
 
 class Employee extends Component {
-  handleDelete = () => {
+  handleDelete() {
     var { id } = this.props.data;
     this.props.deleteEmployee(id)
   };
 
-  render_employee = () => {
-    var { username, is_confirmd } = this.props.data;
-    if (is_confirmd) {
+  render_employee() {
+    var { username, is_confirmed } = this.props.data;
+    if (is_confirmed) {
       return (
         <div className="card-content">{ username } <i onClick={this.handleDelete} className="fa fa-trash delete-emp right red-text darken-4" aria-hidden="true"></i></div>
       )

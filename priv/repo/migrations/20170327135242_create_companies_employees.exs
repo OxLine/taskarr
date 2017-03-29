@@ -3,7 +3,7 @@ defmodule Taskarr.Repo.Migrations.CompaniesEmployees do
 
   def change do
     create table(:companies_employees) do
-      add :is_confirmd, :boolean, default: false, null: false
+      add :is_confirmed, :boolean, default: false, null: false
       add :employee_id, references(:accounts_users, on_delete: :delete_all), null: false
 
       add :team_id, references(:companies_teams)

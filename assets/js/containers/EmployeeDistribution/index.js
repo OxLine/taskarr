@@ -17,8 +17,8 @@ class EmployeeDistribution extends Component {
       <div className="container">
         <Navbar />
         <div className="container">
-          <Link className="btn" to="/new_task">New task</Link>
-          <Link className="btn" to="/manage_task">Manage task</Link>
+          <Link className="btn" to="/add_tasks">Add new tasks</Link>
+          <Link className="btn" to="/manage_tasks">Manage tasks</Link>
         </div>
         <Employees company_id={this.props.params.id}/>
       </div>

@@ -328,8 +328,8 @@ defmodule Taskarr.Companies do
 
   defp employee_changeset(%Employee{} = employee, attrs) do
     employee
-    |> cast(attrs, [:is_confirmd, :company_id, :employee_id, :team_id])
-    |> validate_required([:is_confirmd, :company_id, :employee_id])
+    |> cast(attrs, [:is_confirmed, :company_id, :employee_id, :team_id])
+    |> validate_required([:is_confirmed, :company_id, :employee_id])
   end
 
   alias Taskarr.Companies.Task

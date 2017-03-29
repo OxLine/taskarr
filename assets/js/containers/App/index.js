@@ -6,6 +6,7 @@ import { push } from 'react-router-redux';
 import { authenticate, unauthenticate } from '../../actions/session';
 import Home from '../Home';
 import EmployeeDistribution from '../EmployeeDistribution';
+import AddTasks from '../AddTasks';
 import NotFound from '../../components/NotFound';
 import Login from '../Login';
 import Signup from '../Signup';
@@ -52,6 +53,7 @@ class App extends Component {
         <Route path="/" component={MatchAuthenticated}>
           <IndexRoute component={Home} />
           <Route path="/distribution/:id" component={EmployeeDistribution} />
+          <Route path="/add_tasks/:team_id" componen={AddTasks} />
         </Route>
 
         <Route path="*" component={ NotFound } />

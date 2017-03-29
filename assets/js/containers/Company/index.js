@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { deleteCompany } from '../../actions/company';
 
 class Company extends Component {
-  handleDelete = (e) => {
+  handleDelete (e) {
     e.preventDefault();
     var id = this.props.data.id;
     this.props.deleteCompany(id);
@@ -22,7 +22,7 @@ class Company extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
 }
@@ -31,4 +31,4 @@ class Company extends Component {
 export default connect(
   (state) => ({
     company: state.company,
-}), { deleteCompany })(Company);
+  }), { deleteCompany })(Company);
