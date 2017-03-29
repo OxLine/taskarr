@@ -31,7 +31,7 @@ class Employee extends Component {
     var { username } = this.props.data;
 
     return (
-      <div className="employee col s12">
+      <div className="employee">
         <div className="card">
           { this.render_employee() }
         </div>
