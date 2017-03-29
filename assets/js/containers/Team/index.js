@@ -14,11 +14,11 @@ class Team extends Component {
     console.log(this.props);
 
     return (
+      <div className="container">
       <div className="card">
         <div className="card-content">{ name } <i onClick={this.handleDelete} className="fa fa-trash delete-team right red-text darken-4" aria-hidden="true"></i></div>
-        <div className="card-content">
           <Employees employees={this.props.employees} />
-        </div>
+      </div>
       </div>
     )
   }
