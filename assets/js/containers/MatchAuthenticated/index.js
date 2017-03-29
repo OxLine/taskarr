@@ -11,6 +11,11 @@ type Props = {
 class MatchAuthenticated extends Component {
   props: Props
 
+  constructor (props) {
+    super(props);
+    this.componentWillMount = this.componentWillMount.bind(this);
+    this.render_or_redirect = this.render_or_redirect.bind(this);
+  }
   //componentDidMount() {
   //  const { dispatch, isAuthenticated, willAuthenticate } = this.props;
 
@@ -44,7 +49,6 @@ class MatchAuthenticated extends Component {
   }
 
   render() {
-
     return (
       <div>
         { this.render_or_redirect() }

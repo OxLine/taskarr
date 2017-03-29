@@ -4,6 +4,11 @@ import { Link } from 'react-router';
 import { deleteCompany } from '../../actions/company';
 
 class Company extends Component {
+  constructor (props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
   handleDelete (e) {
     e.preventDefault();
     var id = this.props.data.id;

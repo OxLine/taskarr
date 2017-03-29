@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { deleteEmployee } from '../../actions/employee';
 
 class Employee extends Component {
+  constructor (props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.render_employee = this.render_employee.bind(this);
+  }
+
   handleDelete() {
     var { id } = this.props.data;
     this.props.deleteEmployee(id);

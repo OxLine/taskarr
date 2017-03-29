@@ -4,7 +4,7 @@ import Employee from '../Employee';
 
 class Employees extends Component {
   getUndestributedeEmployees (employees) {
-    employees.filter(emp => !emp.team_id);
+    return employees.filter(emp => !emp.team_id);
   }
 
   render() {
