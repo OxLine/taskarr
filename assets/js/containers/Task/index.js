@@ -1,3 +1,4 @@
+
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { deleteTask } from '../../actions/task';
@@ -10,8 +11,8 @@ class Task extends Component {
   }
 
   handleDelete() {
-    var { team_id } = this.props.data;
-    this.props.deleteTask(team_id);
+    var { id } = this.props.data;
+    this.props.deleteTask(id);
   }
 
   render_task() {
@@ -28,8 +29,6 @@ class Task extends Component {
   }
 
   render() {
-    var { name } = this.props.data;
-
     return (
       <div className="task col s12">
         <div className="card">

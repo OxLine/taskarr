@@ -1,8 +1,9 @@
 import { reset } from 'redux-form';
 import api from '../api'
 
-export function fetchTasks(company_id, team_id) {
-  return dispatch => api.fetch('/tasks/company/' + company_id + '/team/' + team_id)
+export function fetchTasks(company_id, team_id=null) {
+  return dispatch => api.fetch('/tasks/company/' +
+                                company_id + team_id?('/team/' + team_id):'')
     .then((response) => {
       dispatch({type: 'SET_TASKS', response: response.data});
     });

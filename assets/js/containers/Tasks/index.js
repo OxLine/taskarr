@@ -4,15 +4,6 @@ import Task from '../Task';
 
 
 class Tasks extends Component {
-  constructor (props) {
-    super(props);
-    this.getUndestributedeTasks = this.getUndestributedeTasks.bind(this);
-  }
-
-  getUndestributedeTasks (tasks) {
-    tasks.filter(emp => !emp.team_id);
-  }
-
   render() {
     var { tasks } = this.props;
 

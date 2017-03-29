@@ -8,7 +8,7 @@ class Employees extends Component {
   }
 
   render() {
-    var { employees, company_id } = this.props;
+    var { employees } = this.props;
 
     return (
       <div>
