@@ -10,7 +10,6 @@ export default function(state = initialState, action) {
       return state.filter((employee) => {
         return employee.id!==action.id;
       });
-      return new_employees;
     default:
       return state;
   }
