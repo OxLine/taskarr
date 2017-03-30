@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchTasksByCompany } from '../../actions/task';
-import { fetchTeamsNames } from '../../actions/team';
+import { fetchTeams } from '../../actions/team';
 import Tasks from '../Tasks';
 import Navbar from '../Navbar';
 
@@ -17,7 +17,7 @@ class TaskDistribution extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchTeamsNames(this.props.params.company_id);
+    this.props.fetchTeams(this.props.params.company_id);
     this.props.fetchTasksByCompany(this.props.params.company_id);
   }
 
@@ -74,4 +74,4 @@ export default connect(
 (state) => ({
   tasks: state.tasks,
   teams: state.teams
-}), { fetchTasksByCompany, fetchTeamsNames })(TaskDistribution);
+}), { fetchTasksByCompany, fetchTeams })(TaskDistribution);
