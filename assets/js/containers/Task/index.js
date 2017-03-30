@@ -1,7 +1,21 @@
-
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { DragSource } from 'react-dnd';
 import { deleteTask } from '../../actions/task';
+import { TASK } from '../../constants/itemTypes';
+
+const taskSource = {
+  beginDrag(props) {
+    return props.data;
+  }
+};
+
+function collectSource(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  };
+}
 
 class Task extends Component {
   constructor (props) {
@@ -29,7 +43,8 @@ class Task extends Component {
   }
 
   render() {
-    return (
+    var { connectDragSource } = this.props;
+    return connectDragSource(
       <div className="task col s12">
         <div className="card">
           { this.render_task() }
@@ -40,4 +55,5 @@ class Task extends Component {
 }
 
 
-export default connect(null, { deleteTask })(Task);
+export default connect(null, { deleteTask })(
+  DragSource(TASK, taskSource, collectSource)(Task));

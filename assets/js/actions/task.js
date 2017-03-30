@@ -28,7 +28,6 @@ export function addTasks(data) {
   tasks = tasks.filter((task) => task.length > 0);
   return dispatch => api.post('/tasks/' + data.company_id, {tasks: tasks})
     .then((response) => {
-      console.log(response);
       dispatch(reset('addTasks'));
       dispatch({type: 'ADD_TASKS', response: response.data});
     });

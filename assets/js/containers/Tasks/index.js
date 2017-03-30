@@ -12,7 +12,6 @@ class Tasks extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col s6">
             <div className="task-list">
               { completedTasks.map((task) =>
                   <Task key={task.id} data={task} />
@@ -22,7 +21,6 @@ class Tasks extends Component {
               )}
             </div>
           </div>
-        </div>
       </div>
     );
   }

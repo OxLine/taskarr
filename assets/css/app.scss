@@ -60,3 +60,13 @@ select {
       }
     }
 }
+
+.task-list {
+  margin-top: 10px;
+}
+
+.task {
+  .card .card-content{
+    padding: 10px;
+  }
+}
