@@ -11,7 +11,7 @@ class Employees extends Component {
     if (employees.length > 0) {
       return (
         <div>
-          { employees.map((employee) =>
+          { employees.map(employee =>
                 <Employee key={employee.id} data={employee} />
             )}
         </div>

@@ -9,6 +9,10 @@ body {
   background: url('/images/bedge-grunge.png') #3F51B5;
 }
 
+select {
+  display: block;
+}
+
 .delete-emp:hover {
   cursor: pointer;
 }
@@ -56,4 +60,3 @@ body {
       }
     }
 }
-
