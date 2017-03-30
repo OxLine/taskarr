@@ -4,7 +4,6 @@ import api from '../api';
 export function fetchTeams(company_id) {
   return dispatch => api.fetch('/teams/company/' + company_id)
     .then((response) => {
-      console.log(response);
       dispatch({type: 'SET_TEAMS', response: response.data});
     });
 }
