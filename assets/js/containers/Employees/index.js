@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Employee from '../Employee';
+import ScrollArea from 'react-scrollbar';
 
 class Employees extends Component {
   getUndistributedeEmployees (employees) {
@@ -23,11 +24,19 @@ class Employees extends Component {
 
   render() {
     var { employees, isOver } = this.props;
+    var areaClass = isOver ? 'area' : 'area area-btm';
 
     return (
       <div>
         <div className="team-list container">
-          { this.renderEmployees(employees, isOver) }
+          <ScrollArea
+            speed={0.8}
+            className={areaClass}
+            contentClassName="content"
+            horizontal={false}
+            >
+            { this.renderEmployees(employees, isOver) }
+          </ScrollArea>
           { isOver && <div className="can-drop"></div> }
         </div>
       </div>

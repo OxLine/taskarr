@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Team from '../Team';
+import ScrollArea from 'react-scrollbar';
 
 class Teams extends Component {
   getTeamEmployees = (employees, id) => employees.filter(emp => emp.team_id === id)
@@ -10,9 +11,16 @@ class Teams extends Component {
 
     return (
       <div className="team-list">
-        { teams.map((team) =>
-          <Team employees={ this.getTeamEmployees(employees, team.id) } key={team.id} data={team} />
-        )}
+        <ScrollArea
+          speed={0.8}
+          className="area"
+          contentClassName="content"
+          horizontal={false}
+          >
+            { teams.map((team) =>
+              <Team employees={ this.getTeamEmployees(employees, team.id) } key={team.id} data={team} />
+            )}
+        </ScrollArea>
       </div>
     );
   }

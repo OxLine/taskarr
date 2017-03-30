@@ -1,10 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import ScrollArea from 'react-scrollbar';
 import { fetchTasksByCompany } from '../../actions/task';
 import { fetchTeams } from '../../actions/team';
 import Tasks from '../Tasks';
 import Navbar from '../Navbar';
+import UndestributedTasks from '../UndestributedTasks';
+import TeamTasks from '../TeamTasks';
 
 
 class TaskDistribution extends Component {
@@ -37,8 +40,8 @@ class TaskDistribution extends Component {
     var teams = this.props.teams || [];
 
     return teams.map( team => {
-      <p>{ team.name }</p>;
-      { <Tasks tasks={ this.getTasksByTeam(tasks, team.id) } />; }
+      var team_tasks = this.getTasksByTeam(tasks, team.id);
+      return (<TeamTasks key={team.id} data={team} tasks={ team_tasks } />);
     });
   }
 
@@ -59,10 +62,17 @@ class TaskDistribution extends Component {
         </div>
         <div className="row">
           <div className="col s6">
-            <Tasks tasks={undistributedTasks} />
+            <UndestributedTasks tasks={undistributedTasks} />
           </div>
           <div className="col s6">
-            {this.renderDistributedTasks(distributedTasks)}
+            <ScrollArea
+              speed={0.8}
+              className="area-team-tasks"
+              contentClassName="content"
+              horizontal={false}
+              >
+              {this.renderDistributedTasks(distributedTasks)}
+            </ScrollArea>
           </div>
         </div>
       </div>

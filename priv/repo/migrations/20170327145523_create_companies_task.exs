@@ -6,8 +6,8 @@ defmodule Taskarr.Repo.Migrations.CreateTaskarr.Companies.Task do
       add :name, :text
       add :is_completed, :boolean, default: false, null: false
 
-      add :employee_id, references(:companies_employees)
-      add :team_id, references(:companies_teams)
+      add :employee_id, references(:companies_employees, on_delete: :nilify_all)
+      add :team_id, references(:companies_teams, on_delete: :nilify_all)
       add :company_id, references(:companies_companies, on_delete: :delete_all), null: false
 
       timestamps()

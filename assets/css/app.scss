@@ -27,7 +27,7 @@ select {
 }
 
 .team-list {
-  padding-bottom: 25px;
+  padding-bottom: 2px;
 }
 
 .unde-emp {
@@ -35,8 +35,19 @@ select {
 }
 
 .can-drop {
+  margin-top: -8px;
   border-radius: 3px;
-  height: 25px;
+  height: 35px;
+  width: 100%;
+  background: grey;
+  opacity: 70%;
+  margin-bottom: 27px;
+}
+
+.can-drop-task {
+  margin-top: 10px;
+  border-radius: 3px;
+  height: 35px;
   width: 100%;
   background: grey;
   opacity: 70%;
@@ -47,7 +58,7 @@ select {
 }
 
 .empty-preview-tasks {
-  padding: 61px 0;
+  padding: 38px 0;
   font-size: 24px;
   color: grey;
 }
@@ -61,12 +72,30 @@ select {
     }
 }
 
+.unde-task {
+  padding: 8px 0;
+}
+
 .task-list {
   margin-top: 10px;
 }
 
-.task {
-  .card .card-content{
-    padding: 10px;
-  }
+.task .card-content{
+  padding: 10px;
+}
+
+.area {
+  max-height: 400px;
+}
+
+.area-team-tasks {
+  max-height: 450px;
+}
+
+.area-btm {
+  padding-bottom: 25px;
+}
+
+.team-tasks .can-drop-task {
+  margin-bottom: 10px;
 }

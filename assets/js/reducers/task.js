@@ -10,6 +10,14 @@ export default function(state = initialState, action) {
       return state.filter((task) => {
         return task.id!==action.id;
       });
+    case 'UPDATE_TASK':
+      return state.map((task) => {
+        if (task.id === action.response.id) {
+          return {...task, ...action.response};
+        } else {
+          return task;
+        }
+      });
     default:
       return state;
   }

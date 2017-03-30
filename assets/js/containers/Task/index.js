@@ -33,22 +33,20 @@ class Task extends Component {
     var { name, is_completed } = this.props.data;
     if (is_completed) {
       return (
-        <div className="card-content">{ name } <i onClick={this.handleDelete} className="fa fa-trash delete-emp right red-text darken-4" aria-hidden="true"></i></div>
+        <div className="card-content"><i onClick={this.handleDelete} className="fa fa-trash delete-emp right red-text darken-4" aria-hidden="true"></i>{ name.split('\n').map((line) => <p key={Math.random()}>{line}</p> )} </div>
       );
     } else {
       return (
-        <div className="card-content grey-text">{ name } <i onClick={this.handleDelete} className="fa delete-emp fa-trash right red-text darken-4" aria-hidden="true"></i></div>
+        <div className="card-content grey-text"><i onClick={this.handleDelete} className="fa delete-emp fa-trash right red-text darken-4" aria-hidden="true"></i>{ name.split('\n').map((line) => <p key={Math.random()}>{line}</p> )} </div>
       );
     }
   }
 
   render() {
-    var { connectDragSource } = this.props;
+    var { connectDragSource, isDragging } = this.props;
     return connectDragSource(
-      <div className="task col s12">
-        <div className="card">
-          { this.render_task() }
-        </div>
+      <div className="task card">
+        { !isDragging && this.render_task() }
       </div>
     );
   }

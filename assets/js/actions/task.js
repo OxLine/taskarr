@@ -4,7 +4,6 @@ import api from '../api';
 export function fetchTasksByCompany(company_id) {
   return dispatch => api.fetch('/tasks/company/' + company_id)
     .then((response) => {
-      console.log(response);
       dispatch({type: 'SET_TASKS', response: response.data});
     });
 }
@@ -38,4 +37,11 @@ export function deleteTask(id) {
     .then(() => {
       dispatch({type: 'DELETE_TASK', id: id});
     });
+}
+
+export function changeTeam(id, team_id) {
+  return dispatch => {
+    dispatch({type: 'UPDATE_TASK', response: {id: id, team_id: team_id}});
+    api.patch('/tasks/' + id, {task: {team_id: team_id}});
+  }
 }
