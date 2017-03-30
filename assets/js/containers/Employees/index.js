@@ -7,15 +7,28 @@ class Employees extends Component {
     return employees.filter(emp => !emp.team_id);
   }
 
+  renderEmployees (employees, isOver) {
+    if (employees.length > 0) {
+      return (
+        <div>
+          { employees.map((employee) =>
+                <Employee key={employee.id} data={employee} />
+            )}
+        </div> 
+      );
+    } else if (!isOver) {
+      return <span className="grey-text">No employees</span>;
+    }
+  }
+
   render() {
-    var { employees } = this.props;
+    var { employees, isOver } = this.props;
 
     return (
       <div>
         <div className="team-list container">
-          { employees.map((employee) =>
-              <Employee key={employee.id} data={employee} />
-          )}
+          { this.renderEmployees(employees, isOver) }
+          { isOver && <div className="can-drop"></div> } 
         </div>
       </div>
     );

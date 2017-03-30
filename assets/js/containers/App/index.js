@@ -64,8 +64,10 @@ class App extends Component {
   }
 }
 
-export default connect(
+export default DragDropContext(HTML5Backend)(
+connect(
   state => ({
     isAuthenticated: state.session.isAuthenticated,
     willAuthenticate: state.session.willAuthenticate,
   }), { authenticate, unauthenticate, redirectAuthenticated })(App)
+);

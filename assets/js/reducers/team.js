@@ -10,8 +10,7 @@ export default function (state = initialState, action) {
       var new_teams = state.slice();
       for (var i = 0; i < new_teams.length; i++) {
         if (new_teams[i].id === action.response.id) {
-          new_teams[i] = action.response;
-          break;
+          new_teams[i] = {...new_teams[i], ...action.response};
         }
       }
       return new_teams;

@@ -53,6 +53,7 @@ defmodule Taskarr.Web.EmployeeController do
     employee = Companies.get_employee!(id)
 
     with {:ok, %Employee{} = employee} <- Companies.update_employee(employee, employee_params) do
+      employee = Repo.preload(employee, :employee)
       render(conn, "show.json", employee: employee)
     end
   end

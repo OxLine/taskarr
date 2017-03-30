@@ -13,18 +13,25 @@ class AddTasksForm extends Component {
 
   handleSubmit = data => this.props.onSubmit(data);
 
+  handleTextChange = (value) => {
+    this.props.onTextChange(value);
+  }
+
   render() {
     const { handleSubmit, submitting } = this.props;
 
     return (
-      // textarea ??????????????????????????????
       <form onSubmit={handleSubmit(this.handleSubmit)}>
           <Field
             name="tasks"
             type="textarea"
-            component={Input}
+            component="textarea"
             placeholder="Tasks text"
-            className="form-control"
+            onChange={value => {
+              this.handleTextChange(value.target.value);
+            }}
+            ref="text"
+            className="form-control input-field materialize-textarea"
           />
           <button
             type="submit"

@@ -1,7 +1,3 @@
-// TODO: (chernyshov) add team Tue 28 Mar 2017 08:27:54 PM EEST
-// TODO: (chernyshov) fetch company teams Tue 28 Mar 2017 09:08:44 PM EEST
-// TODO: (chernyshov) delete team Tue 28 Mar 2017 08:28:01 PM EEST
-// TODO: (chernyshov) edit team name Tue 28 Mar 2017 08:28:06 PM EEST
 import { reset } from 'redux-form';
 import api from '../api'
 
@@ -13,7 +9,6 @@ export function fetchTeams(company_id) {
 }
 
 export function addTeam(data) {
-  console.log(data);
   return dispatch => api.post('/teams', {team: data})
     .then((response) => {
       dispatch(reset('addTeam'));
@@ -32,5 +27,17 @@ export function deleteTeam(id) {
   return dispatch => api.delete('/teams/' + id)
     .then(() => {
       dispatch({type: 'DELETE_TEAM', id: id});
+      dispatch({type: 'NULL_EMPLOYEE_TEAM', team_id: id});
     });
+}
+
+export function setTeamleader(team_id, teamlid_id) {
+  return dispatch => {
+    dispatch({type: 'UPDATE_TEAM', response: {id: team_id, teamlid_id: teamlid_id}});
+    dispatch({type: 'UPDATE_EMPLOYEE', response: {id: teamlid_id, team_id: team_id}});
+    //  api.post('/teams/teamlead/' + team_id)
+    //  .then((response) => {
+    //    dispatch({type: 'UPDATE_TEAM', response: response.data});
+    //  });
+  };
 }
