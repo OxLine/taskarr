@@ -1,4 +1,4 @@
-[Demo](taskarr.herokuapp.com)
+[Demo](http://taskarr.herokuapp.com)
 # Taskarr
 ## App for creating and manage tasks
 
