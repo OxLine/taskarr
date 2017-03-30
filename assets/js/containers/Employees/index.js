@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Employee from '../Employee';
 
 class Employees extends Component {
-  getUndestributedeEmployees (employees) {
+  getUndistributedeEmployees (employees) {
     return employees.filter(emp => !emp.team_id);
   }
 
@@ -14,7 +14,7 @@ class Employees extends Component {
           { employees.map((employee) =>
                 <Employee key={employee.id} data={employee} />
             )}
-        </div> 
+        </div>
       );
     } else if (!isOver) {
       return <span className="grey-text">No employees</span>;
@@ -28,7 +28,7 @@ class Employees extends Component {
       <div>
         <div className="team-list container">
           { this.renderEmployees(employees, isOver) }
-          { isOver && <div className="can-drop"></div> } 
+          { isOver && <div className="can-drop"></div> }
         </div>
       </div>
     );
