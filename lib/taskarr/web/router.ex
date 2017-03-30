@@ -27,6 +27,8 @@ defmodule Taskarr.Web.Router do
     resources "/teams", TeamController
     get "/employees/company/:id", EmployeeController, :index_by_company
     resources "/employees", EmployeeController
+    get "/tasks/company/:id", TaskController, :index_by_company
+    post "/tasks/:id", TaskController, :create
     resources "/tasks", TaskController
   end
 

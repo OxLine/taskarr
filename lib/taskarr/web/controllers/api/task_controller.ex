@@ -1,6 +1,7 @@
 defmodule Taskarr.Web.TaskController do
   use Taskarr.Web, :controller
 
+  alias Taskarr.Accounts
   alias Taskarr.Companies
   alias Taskarr.Companies.Task
 
@@ -11,12 +12,32 @@ defmodule Taskarr.Web.TaskController do
     render(conn, "index.json", tasks: tasks)
   end
 
+  def index_by_company(conn, %{"id" => id}) do
+    tasks = Companies.list_tasks_by_company(id)
+    user = Accounts.get_current_user(conn)
+    company = Companies.get_company!(id)
+
+    if user.id != company.director_id do
+      raise "Permission denied"
+    end
+
+    render(conn, "index.json", tasks: tasks)
+  end
+
   def create(conn, %{"task" => task_params}) do
     with {:ok, %Task{} = task} <- Companies.create_task(task_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", task_path(conn, :show, task))
       |> render("show.json", task: task)
+    end
+  end
+
+  def create(conn, %{"id" => id, "tasks" => task_params}) do
+    with tasks <- Companies.create_tasks(id, task_params) do
+      conn
+      |> put_status(:created)
+      |> render("index.json", tasks: tasks)
     end
   end
 

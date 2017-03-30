@@ -347,6 +347,10 @@ defmodule Taskarr.Companies do
     Repo.all(Task)
   end
 
+  def list_tasks_by_company(id) do
+    Repo.all(from t in Task, where: t.company_id == ^id)
+  end
+
   @doc """
   Gets a single task.
 
@@ -379,6 +383,24 @@ defmodule Taskarr.Companies do
     %Task{}
     |> task_changeset(attrs)
     |> Repo.insert()
+  end
+
+  def insert_task(task) do
+    case %Task{} |> task_changeset(task) |> Repo.insert do
+      {:ok, task} ->
+        task
+      _ ->
+        {:error}
+    end
+  end
+
+  def create_tasks(company_id, attrs) do
+    attrs = Enum.map(attrs, &(%{"name" => &1}))
+            |> Enum.map(&(Map.put(&1, "company_id", company_id)))
+            |> Enum.map(&(insert_task(&1)))
+            |> Enum.filter(&(if &1 == {:error}, do: false, else: true))
+
+    attrs
   end
 
   @doc """
@@ -430,7 +452,7 @@ defmodule Taskarr.Companies do
 
   defp task_changeset(%Task{} = task, attrs) do
     task
-    |> cast(attrs, [:name, :is_completed])
-    |> validate_required([:name, :is_completed])
+    |> cast(attrs, [:name, :is_completed, :company_id, :team_id, :employee_id])
+    |> validate_required([:name, :is_completed, :company_id])
   end
 end
