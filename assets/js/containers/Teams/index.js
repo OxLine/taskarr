@@ -9,12 +9,10 @@ class Teams extends Component {
     var { teams, employees } = this.props;
 
     return (
-      <div>
-        <div className="team-list">
-          { teams.map((team) =>
-            <Team employees={ this.getTeamEmployees(employees, team.id) } key={team.id} data={team} />
-          )}
-        </div>
+      <div className="team-list">
+        { teams.map((team) =>
+          <Team employees={ this.getTeamEmployees(employees, team.id) } key={team.id} data={team} />
+        )}
       </div>
     );
   }

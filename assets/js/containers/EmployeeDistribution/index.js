@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchEmployees } from '../../actions/employee';
 import { fetchTeams } from '../../actions/team';
-import Employees from '../Employees';
+import UndistributedEmployees from '../UndistributedEmployees';
 import Navbar from '../Navbar';
 import Teams from '../Teams';
 
@@ -46,7 +46,7 @@ class EmployeeDistribution extends Component {
         <div className="row">
           <div className="col s6">
             <AddEmployee company_id={id}/>
-            <Employees employees={ undestributedEmployees }/>
+            <UndistributedEmployees employees={ undestributedEmployees }/>
           </div>
           <div className="col s6">
             <AddTeam company_id={id}/>

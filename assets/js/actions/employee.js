@@ -1,5 +1,5 @@
 import { reset } from 'redux-form';
-import api from '../api'
+import api from '../api';
 
 export function fetchEmployees(company_id) {
   return dispatch => api.fetch('/employees/company/' + company_id)
@@ -21,4 +21,12 @@ export function deleteEmployee(id) {
     .then(() => {
       dispatch({type: 'DELETE_EMPLOYEE', id: id});
     });
+}
+
+export function changeTeam(emp_id, team_id) {
+  return (dispatch) => {
+    var data = {id: emp_id, team_id: team_id}
+    dispatch({type: 'UPDATE_EMPLOYEE', response: data});
+    api.patch('/employees/' + emp_id, {employee: {team_id: team_id}});
+  };
 }

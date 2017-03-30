@@ -16,21 +16,7 @@ class MatchAuthenticated extends Component {
     this.componentWillMount = this.componentWillMount.bind(this);
     this.render_or_redirect = this.render_or_redirect.bind(this);
   }
-  //componentDidMount() {
-  //  const { dispatch, isAuthenticated, willAuthenticate } = this.props;
 
-  //  if ( !isAuthenticated && !willAuthenticate ) {
-  //    dispatch(push('/login'));
-  //  }
-  //}
-
-  //componentDidUpdate(prevProps, prevState) {
-  //  const { dispatch, isAuthenticated, willAuthenticate } = this.props;
-
-  //  if ( !isAuthenticated && !willAuthenticate ) {
-  //    dispatch(push('/login'));
-  //  }
-  //}
   componentWillMount() {
     const { dispatch, isAuthenticated, willAuthenticate } = this.props;
     if ( !isAuthenticated && !willAuthenticate ) {

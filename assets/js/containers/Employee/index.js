@@ -1,6 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { deleteEmployee } from '../../actions/employee';
+import { DragSource } from 'react-dnd';
+import { EMPLOYEE, TEAM } from '../../constants/itemTypes';
+
+const employeeSource = {
+  beginDrag(props) {
+    return props.data;
+  }
+};
+
+function collectSource(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  };
+}
 
 class Employee extends Component {
   constructor (props) {
@@ -29,11 +44,12 @@ class Employee extends Component {
 
   render() {
     var { username } = this.props.data;
+    var { connectDragSource, isDragging } = this.props;
 
-    return (
+    return connectDragSource(
       <div className="employee">
         <div className="card">
-          { this.render_employee() }
+          { !isDragging && this.render_employee() }
         </div>
       </div>
     );
@@ -41,4 +57,5 @@ class Employee extends Component {
 }
 
 
-export default connect(null, { deleteEmployee })(Employee);
+export default connect(null, { deleteEmployee })(
+  DragSource(EMPLOYEE, employeeSource, collectSource)(Employee));

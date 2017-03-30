@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { addTasks } from '../../actions/task';
 import Navbar from '../Navbar';
+import AddTaskPreview from '../../components/AddTaskPreview';
 import AddTasksForm from '../../components/AddTasksForm';
 
 type Props = {
@@ -10,6 +11,10 @@ type Props = {
 }
 
 class AddTasks extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
 
   static contextTypes = {
     router: PropTypes.object,
@@ -21,13 +26,27 @@ class AddTasks extends Component {
                                                 company_id: this.props.params.company_id},
                                               this.context.router);
 
+  handleTextChange = (text) => {
+    this.setState({text: text});
+  }
+
   render() {
+    console.log(this.state.text);
     return (
       <div className="container">
         <Navbar />
         <Link className="btn" to="/distribution/:id">Employee distribution</Link>
         <Link className="btn" to="/manage_tasks/:company_id">Manage tasks</Link>
-        <AddTasksForm onSubmit={this.handleAddTasks} />
+        <div className="row">
+          <div className="col s6">
+            <div className="card add-task">
+              <AddTasksForm onTextChange={this.handleTextChange} onSubmit={this.handleAddTasks} />
+            </div>
+          </div>
+          <div className="col s6">
+            <AddTaskPreview text={this.state.text} />
+          </div>
+        </div>
       </div>
     );
   }
