@@ -5,7 +5,7 @@ defmodule Taskarr.Companies.Team do
     field :name, :string
 
     belongs_to :company, Companies.Company
-    belongs_to :teamlid, Accounts.User 
+    belongs_to :teamlid, Companies.Employee 
 
     timestamps()
   end
