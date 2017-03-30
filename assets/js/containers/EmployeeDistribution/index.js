@@ -13,7 +13,7 @@ import AddTeam from '../AddTeam';
 class EmployeeDistribution extends Component {
   constructor (props) {
     super(props);
-    this.getUndestributedeEmployees = this.getUndestributedeEmployees.bind(this);
+    this.getUndistributedeEmployees = this.getUndistributedeEmployees.bind(this);
     this.getDistributedEmployees = this.getDistributedEmployees.bind(this);
   }
 
@@ -22,7 +22,7 @@ class EmployeeDistribution extends Component {
     this.props.fetchEmployees(this.props.params.id);
   }
 
-  getUndestributedeEmployees(employees) {
+  getUndistributedeEmployees(employees) {
     return employees.filter(emp => !emp.team_id);
   }
 
@@ -33,8 +33,8 @@ class EmployeeDistribution extends Component {
   render() {
     var id = this.props.params.id;
     var employees = this.props.employees;
-    var undestributedEmployees = this.getUndestributedeEmployees(employees);
-    var distrubetedEmployees = this.getDistributedEmployees(employees);
+    var undistributedEmployees = this.getUndistributedeEmployees(employees);
+    var distributedEmployees = this.getDistributedEmployees(employees);
 
     return (
       <div className="container">
@@ -46,11 +46,11 @@ class EmployeeDistribution extends Component {
         <div className="row">
           <div className="col s6">
             <AddEmployee company_id={id}/>
-            <UndistributedEmployees employees={ undestributedEmployees }/>
+            <UndistributedEmployees employees={ undistributedEmployees }/>
           </div>
           <div className="col s6">
             <AddTeam company_id={id}/>
-            <Teams employees={ distrubetedEmployees }/>
+            <Teams employees={ distributedEmployees }/>
           </div>
         </div>
       </div>

@@ -31,7 +31,6 @@ class AddTasks extends Component {
   }
 
   render() {
-    console.log(this.state.text);
     return (
       <div className="container">
         <Navbar />

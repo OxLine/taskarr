@@ -10,7 +10,7 @@ export function fetchTasksByCompany(company_id) {
 }
 
 export function fetchTasksByTeam(team_id) {
-  return dispatch => api.fetch('/tasks/team/' +team_id)
+  return dispatch => api.fetch('/tasks/team/' + team_id)
     .then((response) => {
       dispatch({type: 'SET_TASKS', response: response.data});
                     /* Возможно у этих ребят должны быть разные type-ы*/
@@ -26,7 +26,7 @@ export function fetchTasks() {
 }
 
 export function addTasks(data) {
-  const tasks = data.split('/\r?\n/');
+  const tasks = data.tasks.split('\n\n');
   return dispatch => api.post('/tasks', {...tasks})
     .then((response) => {
       dispatch(reset('addTasks'));

@@ -20,7 +20,7 @@ function collectTarget(connect, monitor) {
   };
 }
 
-class UndestributedEmployees extends Component {
+class UndistributedEmployees extends Component {
   getTeamEmployees = (employees, id) => employees.filter(emp => emp.team_id === id)
 
   renderEmployee(employee, isOver) {
@@ -36,7 +36,7 @@ class UndestributedEmployees extends Component {
 
     return connectDropTarget(
       <div className="container">
-        { this.renderEmployee(employee, isOver) } 
+        { this.renderEmployee(employee, isOver) }
         { isOver && <div className="can-drop"></div> } <hr/>
       </div>
     );
@@ -47,4 +47,4 @@ export default connect(
   (state) => ({
     teams: state.teams,
   }), { setTeamleader })(
-  DropTarget(EMPLOYEE, teamlidTarget, collectTarget)(UndestributedEmployees));
+  DropTarget(EMPLOYEE, teamlidTarget, collectTarget)(UndistributedEmployees));

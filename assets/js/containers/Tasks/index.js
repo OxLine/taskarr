@@ -5,9 +5,9 @@ import Task from '../Task';
 
 class Tasks extends Component {
   render() {
-    var { tasks } = this.props;
-    const uncompletedTasks = tasks?tasks.filter(task => !task.is_completed):[];
-    const completedTasks = tasks?tasks.filter(task => task.is_completed):[];
+    var tasks = this.props.tasks || [];
+    const uncompletedTasks = tasks.filter(task => !task.is_completed);
+    const completedTasks = tasks.filter(task => task.is_completed);
 
     return (
       <div className="container">

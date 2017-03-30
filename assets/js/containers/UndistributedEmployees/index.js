@@ -19,7 +19,7 @@ function collectTarget(connect, monitor) {
   };
 }
 
-class UndestributedEmployees extends Component {
+class UndistributedEmployees extends Component {
   getTeamEmployees = (employees, id) => employees.filter(emp => emp.team_id === id)
 
   render() {
@@ -39,4 +39,4 @@ export default connect(
   (state) => ({
     teams: state.teams,
   }), { changeTeam })(
-  DropTarget(EMPLOYEE, employeesTarget, collectTarget)(UndestributedEmployees));
+  DropTarget(EMPLOYEE, employeesTarget, collectTarget)(UndistributedEmployees));
