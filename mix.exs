@@ -4,10 +4,9 @@ defmodule Taskarr.Mixfile do
   def project do
     [app: :taskarr,
      version: "0.0.1",
-     elixir: ">= 1.3.1",
+     elixir: "~> 1.4",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
-     build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases(),
      deps: deps()]
@@ -18,7 +17,7 @@ defmodule Taskarr.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Taskarr.Application, []},
-     extra_applications: [:logger, :comeonin]]
+     extra_applications: [:logger, :runtime_tools, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -29,7 +28,7 @@ defmodule Taskarr.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.3.0-rc", override: true},
+    [{:phoenix, "~> 1.3.0-rc.1", override: true},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.2"},
      {:postgrex, ">= 0.0.0"},
