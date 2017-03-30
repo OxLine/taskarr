@@ -11,13 +11,13 @@ import TeamEmployees from '../TeamEmployees';
 class Team extends Component {
   handleDelete = () => {
     var { id } = this.props.data;
-    this.props.deleteTeam(id)
+    this.props.deleteTeam(id);
   };
 
   getTeamLid(employees, teamlid_id) {
     for (var i = 0; i < employees.length; i++) {
       if (employees[i].id === teamlid_id) {
-        return employees[i]
+        return employees[i];
       }
     }
   }

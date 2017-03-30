@@ -7,6 +7,7 @@ import { authenticate, unauthenticate } from '../../actions/session';
 import Home from '../Home';
 import EmployeeDistribution from '../EmployeeDistribution';
 import TaskDistribution from '../TaskDistribution';
+import TeamleadTaskDistribution from '../TeamleadTaskDistribution';
 import AddTasks from '../AddTasks';
 import NotFound from '../../components/NotFound';
 import Login from '../Login';
@@ -58,6 +59,7 @@ class App extends Component {
           <Route path="/distribution/:id" component={EmployeeDistribution} />
           <Route path="/add_tasks/:company_id" component={AddTasks} />
           <Route path="/manage_tasks/:company_id" component={TaskDistribution} />
+          <Route path="/manage_tasks/:company_id/:team_id" component={TeamleadTaskDistribution} />
         </Route>
 
         <Route path="*" component={ NotFound } />

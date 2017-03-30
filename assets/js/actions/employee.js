@@ -8,6 +8,13 @@ export function fetchEmployees(company_id) {
     });
 }
 
+export function fetchEmployeesByTeam(company_id, team_id) {
+  return dispatch => api.fetch('/employees/company/'+company_id+'/team/'+team_id)
+    .then((response) => {
+      dispatch({type: 'SET_EMPLOYEES', response: response.data});
+    });
+}
+
 export function addEmployee(data) {
   return dispatch => api.post('/employees', {employee: data})
     .then((response) => {
