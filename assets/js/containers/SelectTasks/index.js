@@ -10,10 +10,12 @@ class SelectTasks extends Component {
     super(props);
     this.state = {
       selectedCompany: '',
-      selectedTeam: ''
+      selectedTeam: '',
+      tasks: this.props.tasks
     };
     this.handleSelectCompanyChange = this.handleSelectCompanyChange.bind(this);
     this.handleSelectTeamChange = this.handleSelectTeamChange.bind(this);
+    this.setTasks = this.setTasks.bind(this);
   }
 
   componentWillMount() {
@@ -24,35 +26,44 @@ class SelectTasks extends Component {
 
   handleSelectCompanyChange(event) {
     this.setState({selectedCompany: event.target.value});
+    this.setTasks();
   }
 
   handleSelectTeamChange(event) {
     this.setState({selectedTeam: event.target.value});
+    this.setTasks();
+  }
+
+  setTasks() {
+    var tasks = this.state.tasks;
+    tasks = tasks.filter(task =>
+      (!this.state.selectedCompany || task.company_id==this.state.selectedCompany) &&
+      (!this.state.selectedTeam || task.team_id==this.state.selectedTeam)
+    );
+    this.setState({tasks: tasks});
   }
 
   render() {
-    var companies = this.props.company || [];
-    var tasks = this.props.tasks || [];
+    var companies = this.props.company.companies || [];
     var teams = this.props.teams || [];
-
     return (
       <div className="row">
-        {companies.length?
+        {companies.length &&
           <select value={this.state.selectedCompany} onChange={this.handleSelectCompanyChange}>
             {companies.map(company =>
-              <option value={company.id}>{company.name}</option>
+              <option key={company.id} value={company.id}>{company.name}</option>
             )}
-          </select> : null
+          </select>
         }
-        {tasks.length?
-          <select value={this.state.selectedTeam} onChange={this.handleSelectTeamChange}>
-            {tasks.map(task =>
-              <option value={task.id}>{task.name}</option>
+        {teams.length &&
+          <select  value={this.state.selectedTeam} onChange={this.handleSelectTeamChange}>
+            {teams.map(team =>
+              <option key={team.id} value={team.id}>{team.name}</option>
             )}
-          </select> :null
+          </select>
         }
         <div className="col s6">
-          <Tasks tasks={ tasks }/>
+          <Tasks tasks={ this.state.tasks }/>
         </div>
       </div>
     );
