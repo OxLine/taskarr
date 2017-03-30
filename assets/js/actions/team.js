@@ -4,18 +4,10 @@ import api from '../api';
 export function fetchTeams(company_id) {
   return dispatch => api.fetch('/teams/company/' + company_id)
     .then((response) => {
-      console.log(response);
       dispatch({type: 'SET_TEAMS', response: response.data});
     });
 }
 
-export function fetchTeamsNames(company_id) {
-  // надо фетчить список команд, а не всех работяг у которых есть команда
-  return dispatch => api.fetch('/teams/company/' + company_id)
-    .then((response) => {
-      dispatch({type: 'SET_TEAMS', response: response.data});
-    });
-}
 
 export function addTeam(data) {
   return dispatch => api.post('/teams', {team: data})
@@ -44,7 +36,7 @@ export function setTeamleader(team_id, teamlid_id) {
   return dispatch => {
     dispatch({type: 'UPDATE_TEAM', response: {id: team_id, teamlid_id: teamlid_id}});
     dispatch({type: 'UPDATE_EMPLOYEE', response: {id: teamlid_id, team_id: team_id}});
-    
+
     api.patch('/employees/' + teamlid_id, {employee: {team_id: team_id}}).then(api.patch('/teams/' + team_id, {team: {teamlid_id: teamlid_id}}));
     //.then((response) => {
     //  dispatch({type: 'UPDATE_TEAM', response: response.data});
