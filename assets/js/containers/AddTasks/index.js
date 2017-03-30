@@ -31,11 +31,12 @@ class AddTasks extends Component {
   }
 
   render() {
+    const company_id = this.props.params.company_id;
     return (
       <div className="container">
         <Navbar />
-        <Link className="btn" to="/distribution/:id">Employee distribution</Link>
-        <Link className="btn" to="/manage_tasks/:company_id">Manage tasks</Link>
+        <Link className="btn" to={"/distribution/"+company_id}>Employee distribution</Link>
+        <Link className="btn" to={"/manage_tasks/"+company_id}>Manage tasks</Link>
         <div className="row">
           <div className="col s6">
             <div className="card add-task">
