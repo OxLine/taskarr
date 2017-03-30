@@ -4,7 +4,6 @@ import api from '../api';
 export function fetchEmployees(company_id) {
   return dispatch => api.fetch('/employees/company/' + company_id)
     .then((response) => {
-      console.log(response);
       dispatch({type: 'SET_EMPLOYEES', response: response.data});
     });
 }
